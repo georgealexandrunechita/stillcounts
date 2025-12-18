@@ -1,0 +1,174 @@
+:root {
+  --bg: #fff5f7;
+  --card: #ffffff;
+  --primary: #f472b6;
+  --primary-soft: #fbcfe8;
+  --text-main: #374151;
+  --text-soft: #9ca3af;
+  --border: #f3e8f0;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: var(--bg);
+  color: var(--text-main);
+}
+
+.app {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #f472b6; 
+  text-align: center;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+  text-shadow: 1px 1px 4px rgba(244, 114, 182, 0.3); 
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+h1:hover {
+  transform: scale(1.05);
+  color: #ec4899;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+#message {
+  color: var(--primary);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* Input agregar tareas */
+.add-task {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.add-task input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.add-task button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.add-task button:hover {
+  background: #ec4899;
+}
+
+/* Listas de tareas */
+.lists {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.list {
+  flex: 1;
+  background: var(--card);
+  padding: 1rem;
+  border-radius: 12px;
+  min-height: 200px;
+  border: 1px solid var(--border);
+}
+
+.list h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Tareas */
+.task {
+  background: #fdf2f8;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 12px;
+  cursor: grab;
+  transition: transform 0.2s, background 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task.dragging {
+  opacity: 0.7;
+  transform: scale(1.02);
+}
+
+.task.done {
+  background: linear-gradient(135deg, var(--primary-soft), var(--primary));
+  color: white;
+  text-decoration: line-through;
+}
+
+.task button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.task button:hover {
+  color: #ec4899;
+}
+
+.description {
+  background: #fdf2f8; 
+  text-align: center;
+  border-left: 4px solid #f472b6; 
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  color: #374151;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.description:hover {
+  background: #fce7f3;
+  transform: translateY(-2px);
+}
+
+
+
+@media (max-width: 480px) {
+  .lists {
+    flex-direction: column;
+  }
+  .add-task {
+    flex-direction: column;
+  }
+  .add-task button {
+    width: 100%;
+  }
+}
