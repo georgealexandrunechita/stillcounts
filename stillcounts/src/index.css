@@ -1,11 +1,11 @@
 :root {
-  --bg: #fff5f7;
-  --card: #ffffff;
-  --primary: #f472b6;
-  --primary-soft: #fbcfe8;
-  --text-main: #374151;
-  --text-soft: #9ca3af;
-  --border: #f3e8f0;
+  --bg: #1f2937;
+  --card: #2c3340;
+  --primary: #4cc9b0;
+  --primary-soft: #2faea0;
+  --text-main: #f0f4f8;
+  --text-soft: #cbd5e1; 
+  --border: #3a3f50;
 }
 
 body {
@@ -13,10 +13,15 @@ body {
   font-family: "Inter", sans-serif;
   background: var(--bg);
   color: var(--text-main);
+  background-image: url('https://res.cloudinary.com/dcp7o3atw/image/upload/v1767816867/40919478-bcac-4569-aecd-2529e8fad98b_1_chehwh.png');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 .app {
-  max-width: 500px;
+  max-width: 900px;
   margin: 2rem auto;
   padding: 2rem 1rem;
   display: flex;
@@ -27,17 +32,16 @@ body {
 h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #f472b6; 
+  color: var(--primary);
   text-align: center;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.25rem;
-  text-shadow: 1px 1px 4px rgba(244, 114, 182, 0.3); 
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 4px rgba(76, 201, 176, 0.2);
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
 h1:hover {
   transform: scale(1.05);
-  color: #ec4899;
+  color: #38b2ac;
 }
 
 .subtitle {
@@ -57,15 +61,24 @@ h1:hover {
 .add-task {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   width: 100%;
 }
 
 .add-task input {
   flex: 1;
-  padding: 0.5rem;
-  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
   border: 1px solid var(--border);
+  background: #3a3f50;
+  color: var(--text-main);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.add-task input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 4px rgba(76, 201, 176, 0.4);
 }
 
 .add-task button {
@@ -73,13 +86,15 @@ h1:hover {
   border: none;
   background: var(--primary);
   color: white;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .add-task button:hover {
-  background: #ec4899;
+  background: #38b2ac;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 /* Listas de tareas */
@@ -87,44 +102,52 @@ h1:hover {
   display: flex;
   gap: 1rem;
   width: 100%;
+  overflow-x: auto;
+  padding-bottom: 1rem;
 }
 
 .list {
-  flex: 1;
+  flex: 0 0 250px;
   background: var(--card);
   padding: 1rem;
-  border-radius: 12px;
-  min-height: 200px;
+  border-radius: 8px;
+  min-height: 250px;
   border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
 }
 
 .list h2 {
   margin-top: 0;
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
+  color: var(--text-main);
 }
 
 /* Tareas */
 .task {
-  background: #fdf2f8;
+  background: #3a3f50;
+  color: var(--text-main);
   padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
-  border-radius: 12px;
+  border-radius: 8px;
   cursor: grab;
-  transition: transform 0.2s, background 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .task.dragging {
   opacity: 0.7;
   transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 .task.done {
   background: linear-gradient(135deg, var(--primary-soft), var(--primary));
-  color: white;
+  color: #ffffff;
   text-decoration: line-through;
 }
 
@@ -137,29 +160,27 @@ h1:hover {
 }
 
 .task button:hover {
-  color: #ec4899;
+  color: #38b2ac;
 }
 
 .description {
-  background: #fdf2f8; 
-  text-align: center;
-  border-left: 4px solid #f472b6; 
+  background: #3a3f50; 
+  text-align: left;
+  border-left: 4px solid var(--primary); 
   padding: 1rem 1.25rem;
-  border-radius: 12px;
-  color: #374151;
+  border-radius: 8px;
+  color: var(--text-main);
   font-size: 0.95rem;
   line-height: 1.5;
   margin-bottom: 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, background 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .description:hover {
-  background: #fce7f3;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
-
-
 
 @media (max-width: 480px) {
   .lists {
